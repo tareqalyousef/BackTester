@@ -2,6 +2,10 @@
 
 Backtest trading strategies in C#. Uses [Alpha Vantage](https://www.alphavantage.co/) for data collection, [ScottPlot](https://github.com/ScottPlot/ScottPlot) for data visualization, and [WPF](https://github.com/dotnet/wpf) for UI framework.
 
+<p align="center">
+  <img src="images/example.png" width=80%>  
+</p>
+
 Features:
 - Limit and market orders
 - OHLC data
