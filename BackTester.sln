@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackTester", "BackTester.csproj", "{DE04E8F8-740D-4DC8-BD44-0E9AAA2ADACE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE04E8F8-740D-4DC8-BD44-0E9AAA2ADACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE04E8F8-740D-4DC8-BD44-0E9AAA2ADACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE04E8F8-740D-4DC8-BD44-0E9AAA2ADACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE04E8F8-740D-4DC8-BD44-0E9AAA2ADACE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89F63529-0B4C-4C8F-B3FE-928B929BE003}
+	EndGlobalSection
+EndGlobal

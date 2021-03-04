@@ -1,0 +1,144 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BackTester"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="BackTester.MainWindow"
+        mc:Ignorable="d"
+        Title="BackTester" Height="573" Width="1024" ResizeMode="CanMinimize" Foreground="{x:Null}" Background="#FF131519">
+    <Window.Resources>
+        <Color x:Key="BlackFade">#FF323232</Color>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="494*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="initialEquityValue" HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,15,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,15,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Initial Equity ($):" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <Button Content="Start Strategy" HorizontalAlignment="Left" Margin="686,258,0,0" VerticalAlignment="Top" Width="89" Height="22" BorderBrush="#FFABADB3" Foreground="White" Click="StartStrategyButton_Click" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF329632" Offset="0"/>
+                    <GradientStop Color="#FF32FF32" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox Name="currentEquityValue"  HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,42,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox Name="avgChangeDayValue" HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,123,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="NaN" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,42,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Current Equity ($):" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,123,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Avg. Change Per Day (%):" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <TextBox Name="winsValue" HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,177,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,177,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Wins:" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <TextBox Name="lossesValue" HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,204,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,204,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Losses:" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <TextBox Name="winrateValue" HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,231,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="NaN" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="0.993"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,231,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Winrate (%):" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <WpfPlot HorizontalAlignment="Left" Height="259" Margin="15,1,0,0" VerticalAlignment="Top" Width="701" BorderBrush="Black" Name="plotUpper" Grid.ColumnSpan="2"/>
+        <Button Content="Collect Data" HorizontalAlignment="Left" Margin="780,258,0,0" VerticalAlignment="Top" Width="89" Height="22" BorderBrush="#FFABADB3" Foreground="White" Click="CollectDataButton_Click" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF965000" Offset="0"/>
+                    <GradientStop Color="#FFFFB400" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox Name="positionsValue"  HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,96,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,96,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Positions:" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <TextBox Name="avgChangeSellValue" HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,150,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="NaN" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,150,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Avg. Change Per Sale (%):" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <TextBox Name="debug" VerticalScrollBarVisibility="Auto" BorderThickness="0" IsReadOnly="True" HorizontalAlignment="Left" Height="207" Margin="686,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" Background="{x:Null}" Foreground="#FF6E6E6E" Grid.Column="1"/>
+        <Button Content="Experimental" HorizontalAlignment="Left" Margin="874,258,0,0" VerticalAlignment="Top" Width="89" Height="22" BorderBrush="#FFABADB3" Foreground="White" Click="ExperimentalButton_Click" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB4B414" Offset="0"/>
+                    <GradientStop Color="#FEFFFF50" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="buyingPowerValue"  HorizontalAlignment="Left" IsReadOnly="True" Height="22" Margin="850,69,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" Width="113" Foreground="White" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF323232" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="685,69,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Buying Power ($):" VerticalAlignment="Top" Width="160" BorderBrush="{x:Null}" Foreground="#FF6E6E6E" Background="{x:Null}" SelectionBrush="#FF0078D7" FontFamily="Arial" FontSize="13" Grid.Column="1"/>
+        <Button Content="Stop" HorizontalAlignment="Left" Margin="686,285,0,0" VerticalAlignment="Top" Width="277" Height="22" BorderBrush="#FFABADB3" Foreground="White" Click="StopButton_Click" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF963232" Offset="0"/>
+                    <GradientStop Color="#FFFF3232" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <WpfPlot HorizontalAlignment="Left" Height="259" Margin="15,260,0,0" VerticalAlignment="Top" Width="701" BorderBrush="Black" x:Name="plotLower" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
